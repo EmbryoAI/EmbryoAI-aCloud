@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.embryoai.acloud.mapper.systemEmbryoMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.systemEmbryo">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="embryo_index" jdbcType="INTEGER" property="embryoIndex" />
+    <result column="procedure_id" jdbcType="VARCHAR" property="procedureId" />
+    <result column="cell_id" jdbcType="VARCHAR" property="cellId" />
+    <result column="embryo_score" jdbcType="DOUBLE" property="embryoScore" />
+    <result column="embryo_fate_id" jdbcType="VARCHAR" property="embryoFateId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.systemEmbryo">
+    insert into t_system_embryo (id, embryo_index, procedure_id, 
+      cell_id, embryo_score, embryo_fate_id
+      )
+    values (#{id,jdbcType=VARCHAR}, #{embryoIndex,jdbcType=INTEGER}, #{procedureId,jdbcType=VARCHAR}, 
+      #{cellId,jdbcType=VARCHAR}, #{embryoScore,jdbcType=DOUBLE}, #{embryoFateId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.systemEmbryo">
+    insert into t_system_embryo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="embryoIndex != null">
+        embryo_index,
+      </if>
+      <if test="procedureId != null">
+        procedure_id,
+      </if>
+      <if test="cellId != null">
+        cell_id,
+      </if>
+      <if test="embryoScore != null">
+        embryo_score,
+      </if>
+      <if test="embryoFateId != null">
+        embryo_fate_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="embryoIndex != null">
+        #{embryoIndex,jdbcType=INTEGER},
+      </if>
+      <if test="procedureId != null">
+        #{procedureId,jdbcType=VARCHAR},
+      </if>
+      <if test="cellId != null">
+        #{cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="embryoScore != null">
+        #{embryoScore,jdbcType=DOUBLE},
+      </if>
+      <if test="embryoFateId != null">
+        #{embryoFateId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

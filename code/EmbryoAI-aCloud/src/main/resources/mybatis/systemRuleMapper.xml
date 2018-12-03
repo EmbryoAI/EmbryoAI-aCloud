@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.embryoai.acloud.mapper.systemRuleMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.systemRule">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="rule_name" jdbcType="VARCHAR" property="ruleName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.embryoai.acloud.entity.systemRule">
+    <result column="data_json" jdbcType="LONGVARCHAR" property="dataJson" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    data_json
+  </sql>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.systemRule">
+    insert into t_system_rule (id, org_id, user_id, 
+      rule_name, description, create_time, 
+      update_time, del_flag, data_json
+      )
+    values (#{id,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{ruleName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR}, #{dataJson,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.systemRule">
+    insert into t_system_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="ruleName != null">
+        rule_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="dataJson != null">
+        data_json,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null">
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="dataJson != null">
+        #{dataJson,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

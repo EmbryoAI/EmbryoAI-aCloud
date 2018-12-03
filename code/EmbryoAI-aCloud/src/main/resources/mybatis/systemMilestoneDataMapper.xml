@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.embryoai.acloud.mapper.systemMilestoneDataMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.systemMilestoneData">
+    <result column="milestone_id" jdbcType="VARCHAR" property="milestoneId" />
+    <result column="milestone_stage" jdbcType="INTEGER" property="milestoneStage" />
+    <result column="pn_id" jdbcType="VARCHAR" property="pnId" />
+    <result column="cell_count" jdbcType="INTEGER" property="cellCount" />
+    <result column="even_id" jdbcType="VARCHAR" property="evenId" />
+    <result column="fragment_id" jdbcType="VARCHAR" property="fragmentId" />
+    <result column="grade_id" jdbcType="VARCHAR" property="gradeId" />
+    <result column="milestone_score" jdbcType="DOUBLE" property="milestoneScore" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+  </resultMap>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.systemMilestoneData">
+    insert into t_system_milestone_data (milestone_id, milestone_stage, pn_id, 
+      cell_count, even_id, fragment_id, 
+      grade_id, milestone_score, user_id, 
+      memo)
+    values (#{milestoneId,jdbcType=VARCHAR}, #{milestoneStage,jdbcType=INTEGER}, #{pnId,jdbcType=VARCHAR}, 
+      #{cellCount,jdbcType=INTEGER}, #{evenId,jdbcType=VARCHAR}, #{fragmentId,jdbcType=VARCHAR}, 
+      #{gradeId,jdbcType=VARCHAR}, #{milestoneScore,jdbcType=DOUBLE}, #{userId,jdbcType=VARCHAR}, 
+      #{memo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.systemMilestoneData">
+    insert into t_system_milestone_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="milestoneId != null">
+        milestone_id,
+      </if>
+      <if test="milestoneStage != null">
+        milestone_stage,
+      </if>
+      <if test="pnId != null">
+        pn_id,
+      </if>
+      <if test="cellCount != null">
+        cell_count,
+      </if>
+      <if test="evenId != null">
+        even_id,
+      </if>
+      <if test="fragmentId != null">
+        fragment_id,
+      </if>
+      <if test="gradeId != null">
+        grade_id,
+      </if>
+      <if test="milestoneScore != null">
+        milestone_score,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="milestoneId != null">
+        #{milestoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="milestoneStage != null">
+        #{milestoneStage,jdbcType=INTEGER},
+      </if>
+      <if test="pnId != null">
+        #{pnId,jdbcType=VARCHAR},
+      </if>
+      <if test="cellCount != null">
+        #{cellCount,jdbcType=INTEGER},
+      </if>
+      <if test="evenId != null">
+        #{evenId,jdbcType=VARCHAR},
+      </if>
+      <if test="fragmentId != null">
+        #{fragmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="milestoneScore != null">
+        #{milestoneScore,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

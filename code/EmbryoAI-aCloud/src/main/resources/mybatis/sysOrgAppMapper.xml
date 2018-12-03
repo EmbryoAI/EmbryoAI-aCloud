@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.embryoai.acloud.mapper.sysOrgAppMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.sysOrgApp">
+    <result column="acloud_id" jdbcType="VARCHAR" property="acloudId" />
+    <result column="acloud_key" jdbcType="VARCHAR" property="acloudKey" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="s3_username" jdbcType="VARCHAR" property="s3Username" />
+    <result column="s3_password" jdbcType="VARCHAR" property="s3Password" />
+  </resultMap>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.sysOrgApp">
+    insert into sys_org_app (acloud_id, acloud_key, org_id, 
+      s3_username, s3_password)
+    values (#{acloudId,jdbcType=VARCHAR}, #{acloudKey,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
+      #{s3Username,jdbcType=VARCHAR}, #{s3Password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.sysOrgApp">
+    insert into sys_org_app
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="acloudId != null">
+        acloud_id,
+      </if>
+      <if test="acloudKey != null">
+        acloud_key,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="s3Username != null">
+        s3_username,
+      </if>
+      <if test="s3Password != null">
+        s3_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="acloudId != null">
+        #{acloudId,jdbcType=VARCHAR},
+      </if>
+      <if test="acloudKey != null">
+        #{acloudKey,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="s3Username != null">
+        #{s3Username,jdbcType=VARCHAR},
+      </if>
+      <if test="s3Password != null">
+        #{s3Password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

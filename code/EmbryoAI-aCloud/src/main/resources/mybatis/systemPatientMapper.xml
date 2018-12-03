@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.embryoai.acloud.mapper.systemPatientMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.systemPatient">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="idcard_no" jdbcType="VARCHAR" property="idcardNo" />
+    <result column="idcard_type_id" jdbcType="VARCHAR" property="idcardTypeId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="birthdate" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="location_id" jdbcType="VARCHAR" property="locationId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="is_drinking" jdbcType="INTEGER" property="isDrinking" />
+    <result column="is_smoking" jdbcType="INTEGER" property="isSmoking" />
+  </resultMap>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.systemPatient">
+    insert into t_system_patient (id, idcard_no, idcard_type_id, 
+      patient_name, birthdate, country, 
+      location_id, address, email, 
+      mobile, create_time, update_time, 
+      del_flag, is_drinking, is_smoking
+      )
+    values (#{id,jdbcType=VARCHAR}, #{idcardNo,jdbcType=VARCHAR}, #{idcardTypeId,jdbcType=VARCHAR}, 
+      #{patientName,jdbcType=VARCHAR}, #{birthdate,jdbcType=TIMESTAMP}, #{country,jdbcType=VARCHAR}, 
+      #{locationId,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{delFlag,jdbcType=INTEGER}, #{isDrinking,jdbcType=INTEGER}, #{isSmoking,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.systemPatient">
+    insert into t_system_patient
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="idcardNo != null">
+        idcard_no,
+      </if>
+      <if test="idcardTypeId != null">
+        idcard_type_id,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="birthdate != null">
+        birthdate,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="locationId != null">
+        location_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="isDrinking != null">
+        is_drinking,
+      </if>
+      <if test="isSmoking != null">
+        is_smoking,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardNo != null">
+        #{idcardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardTypeId != null">
+        #{idcardTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null">
+        #{locationId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="isDrinking != null">
+        #{isDrinking,jdbcType=INTEGER},
+      </if>
+      <if test="isSmoking != null">
+        #{isSmoking,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.systemPatient">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="idcard_no" jdbcType="VARCHAR" property="idcardNo" />
+    <result column="idcard_type_id" jdbcType="VARCHAR" property="idcardTypeId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="birthdate" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="location_id" jdbcType="VARCHAR" property="locationId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="is_drinking" jdbcType="INTEGER" property="isDrinking" />
+    <result column="is_smoking" jdbcType="INTEGER" property="isSmoking" />
+  </resultMap>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.systemPatient">
+    insert into t_system_patient (id, idcard_no, idcard_type_id, 
+      patient_name, birthdate, country, 
+      location_id, address, email, 
+      mobile, create_time, update_time, 
+      del_flag, is_drinking, is_smoking
+      )
+    values (#{id,jdbcType=VARCHAR}, #{idcardNo,jdbcType=VARCHAR}, #{idcardTypeId,jdbcType=VARCHAR}, 
+      #{patientName,jdbcType=VARCHAR}, #{birthdate,jdbcType=TIMESTAMP}, #{country,jdbcType=VARCHAR}, 
+      #{locationId,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{delFlag,jdbcType=INTEGER}, #{isDrinking,jdbcType=INTEGER}, #{isSmoking,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.systemPatient">
+    insert into t_system_patient
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="idcardNo != null">
+        idcard_no,
+      </if>
+      <if test="idcardTypeId != null">
+        idcard_type_id,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="birthdate != null">
+        birthdate,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="locationId != null">
+        location_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="isDrinking != null">
+        is_drinking,
+      </if>
+      <if test="isSmoking != null">
+        is_smoking,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardNo != null">
+        #{idcardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardTypeId != null">
+        #{idcardTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null">
+        #{locationId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="isDrinking != null">
+        #{isDrinking,jdbcType=INTEGER},
+      </if>
+      <if test="isSmoking != null">
+        #{isSmoking,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
