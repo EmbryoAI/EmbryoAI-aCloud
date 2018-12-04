@@ -1,6 +1,6 @@
 package com.embryoai.acloud.entity;
 
-public class sysLocation {
+public class SysLocation {
     private String id;
 
     private String locationName;

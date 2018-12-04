@@ -1,6 +1,6 @@
 package com.embryoai.acloud.entity;
 
-public class sysOrgApp {
+public class SysOrgApp {
     private String acloudId;
 
     private String acloudKey;

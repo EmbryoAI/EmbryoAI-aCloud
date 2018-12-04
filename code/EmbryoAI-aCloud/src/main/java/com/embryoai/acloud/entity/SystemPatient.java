@@ -2,7 +2,7 @@ package com.embryoai.acloud.entity;
 
 import java.util.Date;
 
-public class systemPatient {
+public class SystemPatient {
     private String id;
 
     private String idcardNo;

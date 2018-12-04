@@ -1,6 +1,6 @@
 package com.embryoai.acloud.entity;
 
-public class systemMilestone {
+public class SystemMilestone {
     private String id;
 
     private String embryoId;

@@ -1,6 +1,6 @@
 package com.embryoai.acloud.entity;
 
-public class systemEmbryo {
+public class SystemEmbryo {
     private String id;
 
     private Integer embryoIndex;

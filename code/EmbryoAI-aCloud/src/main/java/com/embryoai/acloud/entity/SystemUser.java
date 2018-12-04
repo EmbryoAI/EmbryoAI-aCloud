@@ -2,7 +2,7 @@ package com.embryoai.acloud.entity;
 
 import java.util.Date;
 
-public class systemUser {
+public class SystemUser {
     private String id;
 
     private String orgId;

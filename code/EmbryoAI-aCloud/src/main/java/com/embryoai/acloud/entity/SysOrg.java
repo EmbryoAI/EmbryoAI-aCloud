@@ -2,7 +2,7 @@ package com.embryoai.acloud.entity;
 
 import java.util.Date;
 
-public class sysOrg {
+public class SysOrg {
     private String id;
 
     private String orgName;

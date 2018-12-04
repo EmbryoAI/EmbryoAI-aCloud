@@ -2,7 +2,7 @@ package com.embryoai.acloud.entity;
 
 import java.util.Date;
 
-public class systemFeedback {
+public class SystemFeedback {
     private String procedureId;
 
     private String orgId;
