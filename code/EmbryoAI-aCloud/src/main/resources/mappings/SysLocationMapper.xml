@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.embryoai.acloud.mapper.SysLocationMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.SysLocation">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="location_name" jdbcType="VARCHAR" property="locationName" />
+    <result column="sole_name" jdbcType="VARCHAR" property="soleName" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="location_level" jdbcType="BIT" property="locationLevel" />
+  </resultMap>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.SysLocation">
+    insert into sys_location (id, location_name, sole_name, 
+      parent_id, location_level)
+    values (#{id,jdbcType=VARCHAR}, #{locationName,jdbcType=VARCHAR}, #{soleName,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=VARCHAR}, #{locationLevel,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.SysLocation">
+    insert into sys_location
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="locationName != null">
+        location_name,
+      </if>
+      <if test="soleName != null">
+        sole_name,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="locationLevel != null">
+        location_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="locationName != null">
+        #{locationName,jdbcType=VARCHAR},
+      </if>
+      <if test="soleName != null">
+        #{soleName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="locationLevel != null">
+        #{locationLevel,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

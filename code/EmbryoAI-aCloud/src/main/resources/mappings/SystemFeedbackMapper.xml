@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.embryoai.acloud.mapper.SystemFeedbackMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.SystemFeedback">
+    <result column="procedure_id" jdbcType="VARCHAR" property="procedureId" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="biochem_pregnancy" jdbcType="INTEGER" property="biochemPregnancy" />
+    <result column="clinical_pregnancy" jdbcType="INTEGER" property="clinicalPregnancy" />
+    <result column="fetus_count" jdbcType="INTEGER" property="fetusCount" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+  </resultMap>
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.SystemFeedback">
+    insert into t_system_feedback (procedure_id, org_id, biochem_pregnancy, 
+      clinical_pregnancy, fetus_count, user_id, 
+      create_time, update_time, del_flag
+      )
+    values (#{procedureId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{biochemPregnancy,jdbcType=INTEGER}, 
+      #{clinicalPregnancy,jdbcType=INTEGER}, #{fetusCount,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.SystemFeedback">
+    insert into t_system_feedback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="procedureId != null">
+        procedure_id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="biochemPregnancy != null">
+        biochem_pregnancy,
+      </if>
+      <if test="clinicalPregnancy != null">
+        clinical_pregnancy,
+      </if>
+      <if test="fetusCount != null">
+        fetus_count,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="procedureId != null">
+        #{procedureId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="biochemPregnancy != null">
+        #{biochemPregnancy,jdbcType=INTEGER},
+      </if>
+      <if test="clinicalPregnancy != null">
+        #{clinicalPregnancy,jdbcType=INTEGER},
+      </if>
+      <if test="fetusCount != null">
+        #{fetusCount,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
