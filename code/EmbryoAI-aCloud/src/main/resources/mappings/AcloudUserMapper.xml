@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.embryoai.acloud.mapper.acloudUserMapper">
-  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.acloudUser">
+<mapper namespace="com.embryoai.acloud.mapper.AcloudUserMapper">
+  <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.AcloudUser">
     <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -17,7 +17,7 @@
     <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
     <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
   </resultMap>
-  <insert id="insert" parameterType="com.embryoai.acloud.entity.acloudUser">
+  <insert id="insert" parameterType="com.embryoai.acloud.entity.AcloudUser">
     insert into sys_acloud_user (id, username, password, 
       wechat_openid, email, mobile, 
       truename, social_id, birthday, 
@@ -29,7 +29,7 @@
       #{sex,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{lastLoginTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.acloudUser">
+  <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.AcloudUser">
     insert into sys_acloud_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
