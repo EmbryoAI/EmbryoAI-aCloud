@@ -33,10 +33,8 @@ public class PatientService {
 		SystemProcedure patientCaseInfo = null;
 		try {
 			JSONObject dataObject = JSON.parseObject(patientInfo);
-			patientBaseInfo = JSON.parseObject(dataObject.getString("patient"), 
-					new TypeReference<SystemPatient>() {});
-			patientCaseInfo = JSON.parseObject(dataObject.getString("procedure"), 
-					new TypeReference<SystemProcedure>() {});
+			patientBaseInfo = dataObject.getObject("patient", SystemPatient.class);
+			patientCaseInfo = dataObject.getObject("procedure", SystemProcedure.class);
 		} catch (Exception e) {
 			log.error("数据解析异常:" + patientInfo);
 			e.printStackTrace();
