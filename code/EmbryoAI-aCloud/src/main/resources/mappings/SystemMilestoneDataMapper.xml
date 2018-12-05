@@ -22,6 +22,16 @@
       #{cellCount,jdbcType=INTEGER}, #{evenId,jdbcType=VARCHAR}, #{fragmentId,jdbcType=VARCHAR}, 
       #{gradeId,jdbcType=VARCHAR}, #{milestoneScore,jdbcType=DOUBLE}, #{userId,jdbcType=VARCHAR}, 
       #{memo,jdbcType=VARCHAR})
+    on duplicate key update
+        milestone_stage = #{milestoneStage,jdbcType=VARCHAR},
+        pn_id = #{pnId,jdbcType=VARCHAR},
+        cell_count = #{cellCount,jdbcType=VARCHAR},
+        even_id = #{evenId,jdbcType=VARCHAR},
+        fragment_id = #{fragmentId,jdbcType=VARCHAR},
+        grade_id = #{gradeId,jdbcType=VARCHAR},
+        milestone_score = #{milestoneScore,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=VARCHAR},
+        memo = #{memo,jdbcType=VARCHAR}
   </insert>
   <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.SystemMilestoneData">
     insert into t_system_milestone_data

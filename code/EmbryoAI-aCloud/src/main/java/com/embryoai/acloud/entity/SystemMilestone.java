@@ -5,7 +5,7 @@ public class SystemMilestone {
 
     private String embryoId;
 
-    private String milestone;
+    private String milestoneId;
 
     private String milestoneTime;
 
@@ -33,15 +33,17 @@ public class SystemMilestone {
         this.embryoId = embryoId == null ? null : embryoId.trim();
     }
 
-    public String getMilestone() {
-        return milestone;
-    }
+    
 
-    public void setMilestone(String milestone) {
-        this.milestone = milestone == null ? null : milestone.trim();
-    }
+    public String getMilestoneId() {
+		return milestoneId;
+	}
 
-    public String getMilestoneTime() {
+	public void setMilestoneId(String milestoneId) {
+		this.milestoneId = milestoneId;
+	}
+
+	public String getMilestoneTime() {
         return milestoneTime;
     }
 

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.embryoai.acloud.entity.SystemMilestone">
     <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="embryo_id" jdbcType="VARCHAR" property="embryoId" />
-    <result column="milestone" jdbcType="VARCHAR" property="milestone" />
+    <result column="milestone_id" jdbcType="VARCHAR" property="milestoneId" />
     <result column="milestone_time" jdbcType="VARCHAR" property="milestoneTime" />
     <result column="milestone_elapse" jdbcType="INTEGER" property="milestoneElapse" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
@@ -12,12 +12,20 @@
     <result column="milestone_path" jdbcType="VARCHAR" property="milestonePath" />
   </resultMap>
   <insert id="insert" parameterType="com.embryoai.acloud.entity.SystemMilestone">
-    insert into t_system_milestone (id, embryo_id, milestone, 
+    insert into t_system_milestone (id, embryo_id, milestone_id, 
       milestone_time, milestone_elapse, user_id, 
       milestone_type, milestone_path)
-    values (#{id,jdbcType=VARCHAR}, #{embryoId,jdbcType=VARCHAR}, #{milestone,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{embryoId,jdbcType=VARCHAR}, #{milestoneId,jdbcType=VARCHAR}, 
       #{milestoneTime,jdbcType=VARCHAR}, #{milestoneElapse,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
       #{milestoneType,jdbcType=INTEGER}, #{milestonePath,jdbcType=VARCHAR})
+      on duplicate key update 
+        embryo_id = #{embryoId,jdbcType=VARCHAR},
+        milestone_id = #{milestoneId,jdbcType=VARCHAR},
+        milestone_time = #{milestoneTime,jdbcType=VARCHAR},
+        milestone_elapse = #{milestoneElapse,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=VARCHAR},
+        milestone_type = #{milestoneType,jdbcType=VARCHAR},
+        milestone_path = #{milestonePath,jdbcType=VARCHAR}
   </insert>
   <insert id="insertSelective" parameterType="com.embryoai.acloud.entity.SystemMilestone">
     insert into t_system_milestone
@@ -29,7 +37,7 @@
         embryo_id,
       </if>
       <if test="milestone != null">
-        milestone,
+        milestone_id,
       </if>
       <if test="milestoneTime != null">
         milestone_time,
@@ -55,7 +63,7 @@
         #{embryoId,jdbcType=VARCHAR},
       </if>
       <if test="milestone != null">
-        #{milestone,jdbcType=VARCHAR},
+        #{milestoneId,jdbcType=VARCHAR},
       </if>
       <if test="milestoneTime != null">
         #{milestoneTime,jdbcType=VARCHAR},
