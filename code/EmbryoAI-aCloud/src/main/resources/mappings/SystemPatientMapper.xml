@@ -129,4 +129,7 @@
       </if>
     </trim>
   </insert>
+  <update id="updatePatient" parameterType="java.util.Map">
+  	UPDATE `t_system_patient` t SET t.`email` = #{email} , t.`mobile` = #{mobile} WHERE t.`id` = #{patientId}
+  </update>
 </mapper>

@@ -175,4 +175,7 @@
       </if>
     </trim>
   </insert>
+  <update id="updateProcedure" parameterType="java.util.Map">
+  	UPDATE `t_system_procedure` t SET t.`memo` = #{memo} WHERE t.`id` = #{procedureId}
+  </update>
 </mapper>
