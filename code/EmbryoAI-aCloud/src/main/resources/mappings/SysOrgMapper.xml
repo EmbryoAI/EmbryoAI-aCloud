@@ -74,4 +74,35 @@
       </if>
     </trim>
   </insert>
+  
+  <select id="selectOrgByName" resultMap="BaseResultMap">
+  	SELECT o.id ,o.org_name ,o.del_flag 
+	FROM sys_org o
+	WHERE o.org_name = #{orgName}
+  </select>
+  
+  <update id="updateOrgById" parameterType="com.embryoai.acloud.entity.SysOrg">
+  	update sys_org 
+  	<set>
+  	  <if test="orgName != null">
+        org_name = #{orgName},
+      </if>
+      <if test="orgDistrict != null">
+        org_district = #{orgDistrict},
+      </if>
+      <if test="orgDepartment != null">
+        org_department = #{orgDepartment},
+      </if>
+      <if test="orgAddress != null">
+        org_address = #{orgAddress},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag},
+      </if>
+  	</set>
+  	where id = #{id}
+  </update>
 </mapper>

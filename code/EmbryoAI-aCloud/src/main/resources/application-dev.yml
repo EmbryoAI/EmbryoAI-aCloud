@@ -17,3 +17,14 @@ server:
 mybatis:
   mapper-locations:
   - classpath:mappings/**/*.xml
+logging: 
+  level: 
+    com.embryoai.acloud.mapper: debug
+  
+  
+linux: 
+  ip: 39.104.173.18
+  username: root
+  password: astec.@c0
+minio: 
+  alias: mycloud

@@ -51,4 +51,40 @@
       </if>
     </trim>
   </insert>
+  
+  <update id="updateKeyById">
+  	UPDATE sys_org_app oa SET oa.acloud_key = #{acloudKey}
+	WHERE oa.org_id = #{acloudId}
+  </update>
+  
+  <select id="selectByAcloudIdAndKey" resultMap="BaseResultMap">
+  	SELECT oa.acloud_id,oa.acloud_key,oa.org_id,oa.s3_username,oa.s3_password
+	FROM sys_org_app oa
+	WHERE oa.acloud_id = #{acloudId} AND oa.acloud_key = #{acloudKey}
+  </select>
+  
+  <select id="selectByOrgId" resultMap="BaseResultMap">
+  	SELECT oa.acloud_id,oa.acloud_key,oa.org_id,oa.s3_username,oa.s3_password
+	FROM sys_org_app oa
+	WHERE oa.org_id = #{orgId}
+  </select>
+  
+  <update id="updateOrgApp" parameterType="com.embryoai.acloud.entity.SysOrgApp">
+  	UPDATE sys_org_app
+  	<set>
+  	  <if test="acloudKey != null">
+        acloud_key = #{acloudKey},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId},
+      </if>
+      <if test="s3Username != null">
+        s3_username = #{s3Username},
+      </if>
+      <if test="s3Password != null">
+        s3_password = #{s3Password},
+      </if>
+  	</set>
+  	where acloud_id = #{acloudId}
+  </update>
 </mapper>
