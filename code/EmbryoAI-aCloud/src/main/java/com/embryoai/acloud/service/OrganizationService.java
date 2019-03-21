@@ -16,20 +16,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
 import com.embryoai.acloud.common.config.ParamConfig;
 import com.embryoai.acloud.common.util.MinioUtil;
 import com.embryoai.acloud.dto.BaseResult;
 import com.embryoai.acloud.dto.Rsp;
 import com.embryoai.acloud.entity.SysOrg;
 import com.embryoai.acloud.entity.SysOrgApp;
-import com.embryoai.acloud.entity.SystemPatient;
-import com.embryoai.acloud.entity.SystemProcedure;
 import com.embryoai.acloud.mapper.SysOrgAppMapper;
 import com.embryoai.acloud.mapper.SysOrgMapper;
-import com.embryoai.acloud.mapper.SystemPatientMapper;
-import com.embryoai.acloud.mapper.SystemProcedureMapper;
 
 @Service
 @Transactional
@@ -48,7 +42,7 @@ public class OrganizationService {
 
 	public BaseResult registeredToCloud(String data){
 		log.info("请求方法:registeredToCloud<|>参数:" + data);
-		Map<String,Object> res = new HashMap<>();
+//		Map<String,Object> res = new HashMap<>();
 		SysOrg org = null;
 		SysOrgApp orgApp = null;
 		try {
@@ -118,6 +112,7 @@ public class OrganizationService {
 		
 	}
 
+	@SuppressWarnings("null")
 	public BaseResult createKey(String data) {
 		log.info("请求方法:createKey<|>参数:" + data);
 		Map<String, String> res = new HashMap<>();

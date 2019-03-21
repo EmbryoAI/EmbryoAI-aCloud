@@ -12,8 +12,23 @@ public class PatientApi {
 
 	@Autowired PatientService patientService;
 	
-	@PostMapping("/api/v1.0/receivePatientInfo")
-	public Object receivePatientInfo(@RequestBody String data){
-		return patientService.receivePatientInfo(data);
+	/**
+	 * 保存用户信息,周期信息
+	 * @param data
+	 * @return
+	 */
+	@PostMapping("/api/v1.0/savePatientInfo")
+	public Object savePatientInfo(@RequestBody String data){
+		return patientService.savePatientInfo(data);
+	}
+	
+	/**
+	 * 修改用户信息,周期信息
+	 * @param data
+	 * @return
+	 */
+	@PostMapping("/api/v1.0/updatePatientInfo")
+	public Object updatePatientInfo(@RequestBody String data){
+		return patientService.updatePatientInfo(data);
 	}
 }

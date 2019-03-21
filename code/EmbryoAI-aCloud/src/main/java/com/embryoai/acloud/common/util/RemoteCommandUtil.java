@@ -6,13 +6,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
-import javax.annotation.Resource;
+
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.embryoai.acloud.common.config.ParamConfig;
+
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
@@ -94,6 +94,7 @@ public class RemoteCommandUtil {
      * @return 
      *       以纯文本的格式返回 
      */  
+	@SuppressWarnings("resource")
 	private static String processStdout(InputStream in, String charset){  
 		InputStream  stdout = new StreamGobbler(in);  
      	StringBuffer buffer = new StringBuffer();;  

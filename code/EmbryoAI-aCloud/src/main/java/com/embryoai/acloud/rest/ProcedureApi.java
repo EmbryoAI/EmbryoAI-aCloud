@@ -26,7 +26,7 @@ public class ProcedureApi {
 	@Autowired SystemPatientMapper patMapper;
 
 	/**
-	 * 修改病例信息
+	 * 修改患者信息
 	 * @param procedureInfo
 	 * @return
 	 */
