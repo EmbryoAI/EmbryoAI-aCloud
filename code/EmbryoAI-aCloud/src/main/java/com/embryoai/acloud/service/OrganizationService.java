@@ -132,39 +132,45 @@ public class OrganizationService {
 			// return Rsp.fail("科室/医疗中心不能为空！", "");
 			// }
 			SysOrg orgInfo = orgMapper.selectOrgByName(org.getOrgName());
-			String orgId = UUID.randomUUID().toString().replaceAll("-", "");
-			String key = UUID.randomUUID().toString().replaceAll("-", "");
+			String key = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 16);
 			String aCloudId = UUID.randomUUID().toString().replaceAll("-", "");
 			if (orgInfo == null) {
+				String orgId = UUID.randomUUID().toString().replaceAll("-", "");
 				org.setId(orgId);
 				org.setDelFlag("1");
-				orgMapper.insertSelective(org);
+				int i = orgMapper.insertSelective(org);
 
 				SysOrgApp soa = new SysOrgApp();
 				soa.setAcloudId(aCloudId);
 				soa.setOrgId(org.getId());
 				soa.setAcloudKey(key);
-				orgAppMapper.insertSelective(soa);
+				int j = orgAppMapper.insertSelective(soa);
 				
-				res.put("aCloudId", soa.getAcloudId());
-				res.put("aCloudKey", soa.getAcloudKey());
-				return Rsp.succ("成功生成云端有效的账号及密钥信息", res);
+				if(i > 0 && j > 0) {
+					res.put("aCloudId", soa.getAcloudId());
+					res.put("aCloudKey", soa.getAcloudKey());
+					return Rsp.succ("成功生成云端有效的账号及密钥信息", res);
+				} else {
+					log.info("成功生成云端有效的账号及密钥信息失败");
+					TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+					return Rsp.fail("成功生成云端有效的账号及密钥信息失败，请重试。", "");
+				}
 
+			} else if ("0".equals(orgInfo.getDelFlag())) {
+				log.info("此机构已注册到云端并激活，无需再生成云端有效账号及密钥信息。");
+				return Rsp.fail("此机构已注册到云端并激活，无需再生成云端有效账号及密钥信息。", "");
+			} else {
+				SysOrgApp oa = orgAppMapper.selectByOrgId(orgInfo.getId());
+				if (oa == null) {
+					oa.setAcloudId(aCloudId);
+					oa.setOrgId(org.getId());
+					oa.setAcloudKey(key);
+					orgAppMapper.insertSelective(oa);
+				}
+				res.put("aCloudId", oa.getAcloudId());
+				res.put("aCloudKey", oa.getAcloudKey());
+				return Rsp.succ("成功生成云端有效key值", res);
 			}
-			if ("0".equals(orgInfo.getDelFlag())) {
-				log.info("此机构已注册到云端，无需再获取云端有效账号及密钥信息。");
-				return Rsp.fail("此机构已注册到云端，无需再获取云端有效账号及密钥信息。", "");
-			}
-			SysOrgApp oa = orgAppMapper.selectByOrgId(orgInfo.getId());
-			if (oa == null) {
-				oa.setAcloudId(aCloudId);
-				oa.setOrgId(org.getId());
-				oa.setAcloudKey(key);
-				orgAppMapper.insertSelective(oa);
-			}
-			res.put("aCloudId", oa.getAcloudId());
-			res.put("aCloudKey", oa.getAcloudKey());
-			return Rsp.succ("成功生成云端有效key值", res);
 		} catch (Exception e) {
 			log.error("获取云端医疗机构aCloud Key出现异常!" + e.getMessage());
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
