@@ -28,7 +28,7 @@
 		<pagehelper.version>1.1.2</pagehelper.version>
 		
 		<commons-io.version>2.5</commons-io.version>
-        <commons-collection.version>3.2.1</commons-collection.version>
+        <commons-collection.version>3.2.2</commons-collection.version>
         <commons-lang.version>3.6</commons-lang.version>
         <guava.version>24.1-jre</guava.version>
         <fastjson.version>1.2.47</fastjson.version>
